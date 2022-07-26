@@ -58,7 +58,11 @@ services.lvm.boot.thin.enable = true;
 	 meslo-lgs-nf
 	 rxvt-unicode
 	 evince
+	 p7zip
+	 unrar
 	 rofi
+	 xarchiver
+	 python310
    ];
 
 programs.chromium = {
@@ -76,17 +80,6 @@ programs.chromium = {
      enable = true;
      enableSSHSupport = true;
    };
-
-  with pkgs;
-  let
-    my-python-packages = python-packages: with python-packages; [
-      pandas
-      requests
-	  beautifulsoup4
-	  selenium
-    ]; 
-    python-with-my-packages = python3.withPackages my-python-packages;
-  in
 
   services.openssh.enable = true;
   programs.ssh.setXAuthLocation = true;

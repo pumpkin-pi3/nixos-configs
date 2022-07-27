@@ -114,6 +114,12 @@ arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 mkdir /mnt/home/$myuser/.config
 mkdir /mnt/home/$myuser/.config/i3
 curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config" >> /mnt/home/$myuser/.config/i3/config
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.Xresources" >> /mnt/home/$myuser/.Xresources
+mkdir /mnt/home/$myuser/.i3
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-1.json" >> /mnt/home/$myuser/.i3/workspace-1.json
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-2.json" >> /mnt/home/$myuser/.i3/workspace-2.json
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh" >> /mnt/home/$myuser/.i3/start_term.sh
+chmod +x /mnt/home/$myuser/.i3/start_term.sh
 arch-chroot /mnt su -c "cd /home/$myuser/.config && wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY

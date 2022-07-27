@@ -14,7 +14,6 @@ Plug 'https://github.com/preservim/tagbar'
 Plug 'https://github.com/andweeb/presence.nvim'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/xiyaowong/nvim-transparent'
-Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'https://github.com/goolord/alpha-nvim'
 call plug#end()

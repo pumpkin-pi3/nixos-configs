@@ -49,7 +49,7 @@ arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -72,6 +72,7 @@ arch-chroot /mnt mkdir /usr/share/wallpapers/
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/feh_pic.jpg" >> /mnt/home/admin/.feh_pic
 
 #INSTALLING YAY
 arch-chroot /mnt git clone https://aur.archlinux.org/yay.git
@@ -87,6 +88,7 @@ arch-chroot /mnt su -c "yay -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s
 arch-chroot /mnt su -c "yay -S win11-icon-theme-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S mcomix --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S peaclock --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S ttf-comfortaa --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S pfetch --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S betterlockscreen --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S ttf-material-design-iconic-font --noconfirm" -s /bin/sh $myname

@@ -1,0 +1,158 @@
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.258854166666667,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splitv",
+            "marks": [],
+            "percent": 0.621068015254624,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 1,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 600,
+                       "width": 800,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "admin@TITAN:~",
+                    "percent": 0.345547249907715,
+                    "swallows": [
+                       {
+                            "class": "^URxvt$",
+			    "title": "^pft$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 1,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 600,
+                       "width": 800,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "peaclock",
+                    "percent": 0.654452750092285,
+                    "swallows": [
+                       {
+                            "class": "^URxvt$",
+			    "title": "^pckc$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1064,
+               "width": 1400,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "fh",
+            "percent": 0.378931984745376,
+	    "swallows": [
+	    	{
+			"class": "^feh$",
+			"title": "^lavand$"
+		}
+	    ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 600,
+       "width": 800,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "percent": 0.425,
+    "swallows": [
+       {
+            "class": "^URxvt$",
+	    "title": "^main$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.316145833333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "htop",
+            "percent": 0.5,
+            "swallows": [
+               {
+                    "class": "^URxvt$",
+		    "title": "^htp$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "newsboat",
+            "percent": 0.5,
+            "swallows": [
+               {
+                    "class": "^URxvt$",
+		    "title": "^nwsb$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

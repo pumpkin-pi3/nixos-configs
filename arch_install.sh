@@ -8,6 +8,7 @@ myname='admin'
 disk="/dev/sda"
 wallpaper_url="https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/wallpaper.jpg"
 wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
+fehpic="https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/feh_pic.jpg"
 #THIS MUST BE A NON-CHROOT PATH!!!
 
 #INITIALIZATION
@@ -49,7 +50,7 @@ arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip element-desktop --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -72,7 +73,7 @@ arch-chroot /mnt mkdir /usr/share/wallpapers/
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/feh_pic.jpg" >> /mnt/home/admin/.feh_pic
+curl "$fehpic" >> /mnt/home/$myuser/.feh_pic
 
 #INSTALLING YAY
 arch-chroot /mnt git clone https://aur.archlinux.org/yay.git
@@ -104,9 +105,14 @@ arch-chroot /mnt fc-cache -f -v
 arch-chroot /mnt locale-gen
 
 #NEOVIM PLUGINS
+arch-chroot /mnt mkdir /home/$myname/.config/nvim/
+arch-chroot /mnt curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/init.vim' >> /home/$myname/.config/nvim/init.vim
+arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/nvim-install-plugged.sh)"' -s /bin/sh $myname
+arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 
-arch-chroot /mnt mkdir /home/$myname/.config/nvim/
-arch-chroot /mnt mkdir /home/$myname/.config/nvim/
+#I3 CONFIGS, POLYBAR AND ROFI
+arch-chroot /mnt curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config" >> /mnt/home
+arch-chroot /mnt su -c "cd /home/$myuser/.config && wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

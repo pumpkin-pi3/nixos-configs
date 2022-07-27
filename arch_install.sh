@@ -71,13 +71,14 @@ arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
 
-#INSTALLING AUR PACKAGES
+#INSTALLING YAY
 arch-chroot /mnt git clone https://aur.archlinux.org/yay.git
 arch-chroot /mnt mv yay /opt
 arch-chroot /mnt su -c "sudo chown -R $myname:$myname /opt/yay" -s /bin/sh $myname &&
 arch-chroot /mnt su -c "cd /opt/yay && makepkg -fsri --noconfirm" -s /bin/sh $myname &&
 arch-chroot /mnt rm -r /opt/yay
 
+#INSTALLING AUR PACKAGES
 arch-chroot /mnt su -c "yay -S nomachine --noconfirm" -s /bin/sh $myname 
 arch-chroot /mnt su -c "yay -S ttf-apple-emoji --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
@@ -87,3 +88,6 @@ arch-chroot /mnt su -c "pikaur -S peaclock --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S pfetch --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname
+
+#INSTALLATION END NOTIFY
+espeak-ng 'Installation is finished'

@@ -11,7 +11,8 @@ wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 #THIS MUST BE A NON-CHROOT PATH!!!
 
 #INITIALIZATION
-timedatectl set-ntp true
+#timedatectl set-ntp true
+#PGP keys can become unusable if time is set incorrectly
 pacman -Sy
 pacman-key --populate archlinux
 wipefs -af /dev/sda

@@ -120,7 +120,7 @@ curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace
 curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-2.json" >> /mnt/home/$myuser/.i3/workspace-2.json
 curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh" >> /mnt/home/$myuser/.i3/start_term.sh
 chmod +x /mnt/home/$myuser/.i3/start_term.sh
-arch-chroot /mnt su -c "cd /home/$myuser/.config && wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && 7z x plbr-rofi.7z" -s /bin/sh $myname
+arch-chroot /mnt su -c "cd /home/$myuser/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

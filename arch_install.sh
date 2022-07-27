@@ -55,6 +55,7 @@ arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 duidu=$(arch-chroot /mnt blkid -s UUID -o value /dev/sda2)
 sed -i "s?GRUB_CMDLINE_LINUX=\"?GRUB_CMDLINE_LINUX=\"cryptdevice=UUID=$duidu\:cryptlvm root=/dev/vg1/root?g" /mnt/etc/default/grub
+sed -i "s?GRUB_GFXMODE=auto?GRUB_GFXMODE=1920x1080x32?g" /mnt/etc/default/grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager
 arch-chroot /mnt systemctl enable sshd

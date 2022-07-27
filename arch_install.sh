@@ -24,7 +24,7 @@ parted $disk --script mkpart 'macOS-Monterey-Rice' ext4 201MiB 100%
 parted $disk --script set 1 esp on
 parted $disk --script set 2 lvm on
 espeak-ng 'LUKS password prompt'
-cryptsetup luksFormat /dev/sda2
+cryptsetup luksFormat --type luks1 /dev/sda2
 espeak-ng 'LUKS password prompt'
 cryptsetup open /dev/sda2 cryptlvm
 pvcreate /dev/mapper/cryptlvm

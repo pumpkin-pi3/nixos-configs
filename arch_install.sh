@@ -103,5 +103,10 @@ arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pump
 arch-chroot /mnt fc-cache -f -v
 arch-chroot /mnt locale-gen
 
+#NEOVIM PLUGINS
+
+arch-chroot /mnt mkdir /home/$myname/.config/nvim/
+arch-chroot /mnt mkdir /home/$myname/.config/nvim/
+
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

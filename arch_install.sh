@@ -17,11 +17,11 @@ pacman -S archlinux-keyring --noconfirm
 wipefs /dev/sda
 
 #PARTITION SETUP
-parted "$disk" --script mktable gpt
-parted "$disk" --script mklabel gpt
-parted "$disk" --script mkpart CloverEFI fat32 1MiB 201MiB
-parted "$disk" --script mkpart 'macOS Monterey Rice' ext4 201MiB 100%
-parted "$disk" --script set 2 lvm on
+parted $disk --script mktable gpt
+parted $disk --script mklabel gpt
+parted $disk --script mkpart CloverEFI fat32 1MiB 201MiB
+parted $disk --script mkpart 'macOS Monterey Rice' ext4 201MiB 100%
+parted $disk --script set 2 lvm on
 espeak-ng 'LUKS password prompt'
 cryptsetup luksFormat /dev/sda2
 espeak-ng 'LUKS password prompt'

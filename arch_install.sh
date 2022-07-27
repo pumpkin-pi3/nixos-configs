@@ -6,7 +6,7 @@
 hostname='TROST-DISTRICT'
 myname='admin'
 disk="/dev/sda"
-wallpaper_url=""
+wallpaper_url="https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/wallpaper.jpg"
 wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 
 #INITIALIZATION

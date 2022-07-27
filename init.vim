@@ -14,11 +14,7 @@ Plug 'https://github.com/preservim/tagbar'
 Plug 'https://github.com/andweeb/presence.nvim'
 Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/xiyaowong/nvim-transparent'
-Plug 'liuchengxu/vim-clap'
-Plug 'https://github.com/goolord/alpha-nvim'
 call plug#end()
-
-let g:dashboard_default_executive ='clap'
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="-"

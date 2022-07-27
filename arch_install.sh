@@ -111,7 +111,9 @@ arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pump
 arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 
 #I3 CONFIGS, POLYBAR AND ROFI
-arch-chroot /mnt curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config" >> /mnt/home
+mkdir /mnt/home/$myuser/.config
+mkdir /mnt/home/$myuser/.config/i3
+curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config" >> /mnt/home/$myuser/.config/i3/config
 arch-chroot /mnt su -c "cd /home/$myuser/.config && wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY

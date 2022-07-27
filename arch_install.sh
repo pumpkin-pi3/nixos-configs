@@ -96,12 +96,11 @@ arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s 
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname
 
 #ZSH INSTALLER
-arch-chroot /mnt pacman -S zsh --noconfirm &&
-arch-chroot /mnt su -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended' -s /bin/sh $myname &&
-arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname &&
-arch-chroot /mnt su -c "chsh -s /usr/bin/zsh" -s /bin/sh $myname
-arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pumpkin-pi3/kde-config/main/settingup_ohmyzsh_and_p10k.sh)"' -s /bin/sh $myname &&
-arch-chroot /mnt fc-cache -f -v &&
+arch-chroot /mnt su -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended' -s /bin/sh $myname
+arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "sudo chsh $myname -s /usr/bin/zsh" -s /bin/sh $myname
+arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pumpkin-pi3/kde-config/main/settingup_ohmyzsh_and_p10k.sh)"' -s /bin/sh $myname
+arch-chroot /mnt fc-cache -f -v
 arch-chroot /mnt locale-gen
 
 #INSTALLATION END NOTIFY

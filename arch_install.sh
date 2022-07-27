@@ -13,8 +13,8 @@ wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 #INITIALIZATION
 #timedatectl set-ntp true
 #PGP keys can become unusable if time is set incorrectly
+pacman -Sy archlinux-keyring --noconfirm
 pacman -Sy
-pacman -S archlinux-keyring --noconfirm
 wipefs -af /dev/sda
 
 #PARTITION SETUP

@@ -66,6 +66,7 @@ arch-chroot /mnt pacman -Syu --noconfirm
 arch-chroot /mnt sudo systemctl enable lightdm
 arch-chroot /mnt sed -i "s?#greeter-session=example-gtk-gnome?greeter-session=lightdm-slick-greeter?g" /etc/lightdm/lightdm.conf
 arch-chroot /mnt sed -i "s?#logind-check-graphical=false?logind-check-graphical=true?g" /etc/lightdm/lightdm.conf
+arch-chroot /mnt mkdir /usr/share/wallpapers/
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"

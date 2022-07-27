@@ -43,12 +43,13 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 arch-chroot /mnt hwclock --systohc
 sed -i 's/#en_US.UTF-8/en_US.UTF-8/g' /mnt/etc/locale.gen
+arch-chroot /mnt localectl set-locale en_US.UTF-8
 arch-chroot /mnt echo $hostname >> /mnt/etc/hostname
 arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB

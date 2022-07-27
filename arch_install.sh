@@ -14,7 +14,7 @@ wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 #timedatectl set-ntp true
 #PGP keys can become unusable if time is set incorrectly
 pacman -Sy
-pacman-key --populate archlinux
+pacman -S archlinux-keyring --noconfirm
 wipefs -af /dev/sda
 
 #PARTITION SETUP

@@ -55,7 +55,6 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager
 arch-chroot /mnt systemctl enable sshd
 arch-chroot /mnt useradd -mG wheel $myname
-
 espeak-ng 'Password prompt'
 arch-chroot /mnt passwd $myname
 arch-chroot /mnt passwd
@@ -67,4 +66,3 @@ arch-chroot /mnt sed -i "s?#logind-check-graphical=false?logind-check-graphical=
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
-echo 'theme-name=Mint-Y-Legacy-Dark-Red' >> "/mnt/etc/lightdm/slick-greeter.conf"

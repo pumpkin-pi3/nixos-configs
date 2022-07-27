@@ -48,7 +48,7 @@ arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -82,5 +82,8 @@ arch-chroot /mnt su -c "yay -S nomachine --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S ttf-apple-emoji --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S win11-icon-theme-git --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "pikaur -S mcomix --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "pikaur -S peaclock --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "pikaur -S pfetch --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname

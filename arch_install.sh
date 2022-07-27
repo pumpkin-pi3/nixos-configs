@@ -106,7 +106,7 @@ arch-chroot /mnt locale-gen
 
 #NEOVIM PLUGINS
 arch-chroot /mnt mkdir /home/$myname/.config/nvim/
-arch-chroot /mnt curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/init.vim' >> /home/$myname/.config/nvim/init.vim
+arch-chroot /mnt curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/init.vim' >> /mnt/home/$myname/.config/nvim/init.vim
 arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/nvim-install-plugged.sh)"' -s /bin/sh $myname
 arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 

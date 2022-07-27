@@ -86,6 +86,7 @@ arch-chroot /mnt su -c "pikaur -S win11-icon-theme-git --noconfirm" -s /bin/sh $
 arch-chroot /mnt su -c "pikaur -S mcomix --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S peaclock --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "pikaur -S pfetch --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "pikaur -S ttf-material-design-iconic-font --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname
 

@@ -13,7 +13,7 @@ wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 #INITIALIZATION
 timedatectl set-ntp true
 pacman -Sy
-pacman -S archlinux-keyring --noconfirm
+pacman-key --populate archlinux
 wipefs -af /dev/sda
 
 #PARTITION SETUP

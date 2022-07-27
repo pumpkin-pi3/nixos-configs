@@ -81,12 +81,12 @@ arch-chroot /mnt rm -r /opt/yay
 #INSTALLING AUR PACKAGES
 arch-chroot /mnt su -c "yay -S nomachine --noconfirm" -s /bin/sh $myname 
 arch-chroot /mnt su -c "yay -S ttf-apple-emoji --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S win11-icon-theme-git --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S mcomix --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S peaclock --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S pfetch --noconfirm" -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S ttf-material-design-iconic-font --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S win11-icon-theme-git --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S mcomix --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S peaclock --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S pfetch --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S ttf-material-design-iconic-font --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname
 

@@ -4,7 +4,7 @@
 # zsh -c "$(curl -fsSL https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/arch_install.sh)"
 
 # BE SURE THE INSTALLATION ENVIRONMENT'S VOLUME ISN'T TOO LOW:
-# amixer set Master 10+
+amixer set Master 10+
 
 #CHANGE THE SHELL IF NECESSARY!!!
 

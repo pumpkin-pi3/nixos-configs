@@ -70,8 +70,8 @@ arch-chroot /mnt systemctl enable NetworkManager
 arch-chroot /mnt systemctl enable sshd
 arch-chroot /mnt useradd -mG wheel $myname
 espeak-ng 'Password prompt'
-arch-chroot /mnt passwd $myname
-arch-chroot /mnt passwd
+arch-chroot /mnt usermod --password $(echo $mgwd | openssl passwd -1 -stdin) root
+arch-chroot /mnt usermod --password $(echo $mgwd | openssl passwd -1 -stdin) $myname
 sed -i 's?# %wheel ALL?%wheel ALL?' /mnt/etc/sudoers
 arch-chroot /mnt pacman -Syu --noconfirm
 arch-chroot /mnt sudo systemctl enable lightdm

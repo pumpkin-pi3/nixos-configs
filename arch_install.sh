@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# FOR INSTANT RUNNING:
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/arch_install.sh)"
+
 #CHANGE THE SHELL IF NECESSARY!!!
 
 #VARIABLES

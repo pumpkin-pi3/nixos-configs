@@ -76,7 +76,7 @@ arch-chroot /mnt mkdir /usr/share/wallpapers/
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
-curl "$fehpic" >> /mnt/home/$myuser/.feh_pic
+curl "$fehpic" >> /mnt/home/$myname/.feh_pic
 
 #INSTALLING YAY
 arch-chroot /mnt git clone https://aur.archlinux.org/yay.git
@@ -114,16 +114,17 @@ arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pump
 arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 
 #I3 CONFIGS, POLYBAR AND ROFI
-mkdir /mnt/home/$myuser/.config
-mkdir /mnt/home/$myuser/.config/i3
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config" >> /mnt/home/$myuser/.config/i3/config
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.Xresources" >> /mnt/home/$myuser/.Xresources
-mkdir /mnt/home/$myuser/.i3
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-1.json" >> /mnt/home/$myuser/.i3/workspace-1.json
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-2.json" >> /mnt/home/$myuser/.i3/workspace-2.json
-curl "https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh" >> /mnt/home/$myuser/.i3/start_term.sh
-chmod +x /mnt/home/$myuser/.i3/start_term.sh
-arch-chroot /mnt su -c "cd /home/$myuser/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
+
+arch-chroot /mnt su -c "mkdir /home/$myname/.config" -s /bin/sh $myname
+arch-chroot /mnt su -c "mkdir /home/$myname/.config/i3" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config' >> /home/$myname/.config/i3/config" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.Xresources' >> /home/$myname/.Xresources" -s /bin/sh $myname
+arch-chroot /mnt su -c "mkdir /home/$myname/.i3" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-1.json' >> /home/$myname/.i3/workspace-1.json" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-2.json' >> /home/$myname/.i3/workspace-2.json" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh' >> /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
+chmod +x /home/$myname/.i3/start_term.sh
+arch-chroot /mnt su -c "cd /home/$myname/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

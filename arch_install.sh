@@ -126,7 +126,7 @@ arch-chroot /mnt su -c "mkdir /home/$myname/.i3" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-1.json' >> /home/$myname/.i3/workspace-1.json" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/workspace-2.json' >> /home/$myname/.i3/workspace-2.json" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh' >> /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
-chmod +x /home/$myname/.i3/start_term.sh
+arch-chroot /mnt su -c "chmod +x /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
 arch-chroot /mnt su -c "cd /home/$myname/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY

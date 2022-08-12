@@ -79,7 +79,7 @@ arch-chroot /mnt mkdir /usr/share/wallpapers/
 arch-chroot /mnt wget "$wallpaper_url" -O "$wallpaper_path"
 echo "[Greeter]" >> "/mnt/etc/lightdm/slick-greeter.conf"
 echo "background=$wallpaper_path" >> "/mnt/etc/lightdm/slick-greeter.conf"
-curl "$fehpic" >> /mnt/home/$myname/.feh_pic
+curl "$fehpic" >> /mnt/home/$myname/.feh_pic.jpg
 
 #INSTALLING YAY
 arch-chroot /mnt git clone https://aur.archlinux.org/yay.git

@@ -17,6 +17,10 @@ wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 fehpic="https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/feh_pic.jpg"
 #THIS MUST BE A NON-CHROOT PATH!!!
 
+#MAGIC WORD
+espeak-ng "Type your magic word"
+read mgwd
+
 #INITIALIZATION
 #timedatectl set-ntp true
 #PGP keys can become unusable if time is set incorrectly
@@ -31,10 +35,8 @@ parted $disk --script mkpart CloverEFI fat32 1MiB 201MiB
 parted $disk --script mkpart 'macOS-Monterey-Rice' ext4 201MiB 100%
 parted $disk --script set 1 esp on
 parted $disk --script set 2 lvm on
-espeak-ng 'LUKS password prompt'
-cryptsetup luksFormat --type luks1 /dev/sda2
-espeak-ng 'LUKS password prompt'
-cryptsetup open /dev/sda2 cryptlvm
+echo -n $mgwd | cryptsetup luksFormat --type luks1 /dev/sda2 -
+echo -n $mgwd | cryptsetup open /dev/sda2 cryptlvm -
 pvcreate /dev/mapper/cryptlvm
 vgcreate vg1 /dev/mapper/cryptlvm
 lvcreate -l 100%FREE vg1 -n root

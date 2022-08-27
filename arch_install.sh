@@ -58,7 +58,7 @@ arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip element-desktop pcmanfm-qt polkit polkit-kde-agent --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip element-desktop pcmanfm-qt polkit polkit-kde-agent kdegraphics-thumbnailers kvantum qt5ct mpv fcitx5 lxappearance --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -100,12 +100,13 @@ arch-chroot /mnt su -c "yay -S ttf-comfortaa --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S pfetch --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S betterlockscreen --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S ttf-material-design-iconic-font --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S fcitx5-mozc-ut-full --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "yay -S qt-avif-image-plugin-libavif-git --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo update-mime-database /usr/share/mime" -s /bin/sh $myname
 
 #ZSH INSTALLER
 arch-chroot /mnt su -c 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended' -s /bin/sh $myname
-arch-chroot /mnt su -c "pikaur -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
+arch-chroot /mnt su -c "yay -S ttf-meslo-nerd-font-powerlevel10k --noconfirm" -s /bin/sh $myname
 arch-chroot /mnt su -c "sudo chsh $myname -s /usr/bin/zsh" -s /bin/sh $myname
 arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pumpkin-pi3/kde-config/main/settingup_ohmyzsh_and_p10k.sh)"' -s /bin/sh $myname
 arch-chroot /mnt fc-cache -f -v
@@ -118,7 +119,6 @@ arch-chroot /mnt su -c 'sh -c "$(wget -O- https://raw.githubusercontent.com/pump
 arch-chroot /mnt su -c 'nvim -c "PlugInstall" -cwqa' -s /bin/sh $myname
 
 #I3 CONFIGS, POLYBAR AND ROFI
-
 arch-chroot /mnt su -c "mkdir /home/$myname/.config" -s /bin/sh $myname
 arch-chroot /mnt su -c "mkdir /home/$myname/.config/i3" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/config' >> /home/$myname/.config/i3/config" -s /bin/sh $myname
@@ -130,6 +130,12 @@ arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixo
 arch-chroot /mnt su -c "chmod +x /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
 arch-chroot /mnt su -c "cd /home/$myname/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.p10k.zsh' >> /home/$myname/.p10k.zsh" -s /bin/sh $myname
+
+#PAM ENVIRONMENT
+arch-chroot /mnt su -c "echo 'QT_QPA_PLATFORMTHEME=qt5ct' >> /home/$myname/.pam_environment" -s /bin/sh $myname
+arch-chroot /mnt su -c "echo 'GTK_IM_MODULE=fcitx' >> /home/$myname/.pam_environment" -s /bin/sh $myname
+arch-chroot /mnt su -c "echo 'QT_IM_MODULE=fcitx' >> /home/$myname/.pam_environment" -s /bin/sh $myname
+arch-chroot /mnt su -c "echo 'XMODIFIERS=@im=fcitx' >> /home/$myname/.pam_environment" -s /bin/sh $myname
 
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

@@ -129,6 +129,7 @@ arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixo
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/start_term.sh' >> /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
 arch-chroot /mnt su -c "chmod +x /home/$myname/.i3/start_term.sh" -s /bin/sh $myname
 arch-chroot /mnt su -c "cd /home/$myname/.config && sudo wget 'https://github.com/pumpkin-pi3/nixos-configs/raw/main/plbr-rofi.7z' && sudo 7z x plbr-rofi.7z" -s /bin/sh $myname
+arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.zshrc' >> /home/$myname/.zshrc" -s /bin/sh $myname
 arch-chroot /mnt su -c "curl 'https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/.p10k.zsh' >> /home/$myname/.p10k.zsh" -s /bin/sh $myname
 
 #PAM ENVIRONMENT

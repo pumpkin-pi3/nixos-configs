@@ -58,7 +58,7 @@ arch-chroot /mnt echo "127.0.0.1       localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost" >> /mnt/etc/hosts
 arch-chroot /mnt echo "127.0.1.1       $hostname.localdomain   $hostname" >> /mnt/etc/hosts
 arch-chroot /mnt pacman -Sy
-arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip element-desktop pcmanfm-qt polkit polkit-kde-agent kdegraphics-thumbnailers kvantum qt5ct mpv fcitx5 lxappearance --noconfirm
+arch-chroot /mnt pacman -S wget sudo neovim openssh grub efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers git xdg-utils xdg-user-dirs xorg imagemagick i3-gaps ffmpegthumbs lightdm lightdm-slick-greeter noto-fonts noto-fonts-cjk chromium virtualbox-guest-utils gimp rofi polybar zsh htop newsboat discord rxvt-unicode feh scrot polkit polkit-kde-agent ttf-fantasque-sans-mono ttf-iosevka-nerd p7zip element-desktop pcmanfm-qt polkit polkit-kde-agent kdegraphics-thumbnailers kvantum qt5ct mpv fcitx5 lxappearance dolphin --noconfirm
 sed -i -e '/HOOKS=(/s/filesystems/encrypt lvm2 filesystems/' /mnt/etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB

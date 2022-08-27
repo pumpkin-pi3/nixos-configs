@@ -143,7 +143,7 @@ arch-chroot /mnt su -c "echo '[General]' >> /home/$myname/.config/kdeglobals" -s
 arch-chroot /mnt su -c "echo 'TerminalApplication=urxvtc' >> /home/$myname/.config/kdeglobals" -s /bin/sh $myname
 
 #REMOVE UNNECESSARY PACKAGES
-arch-chroot /mnt pacman -R emacs
+arch-chroot /mnt pacman -R emacs --noconfirm
 
 #INSTALLATION END NOTIFY
 espeak-ng 'Installation is finished'

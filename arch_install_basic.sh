@@ -16,6 +16,10 @@ wallpaper_url="https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/
 wallpaper_path="/usr/share/wallpapers/wallpaper_default.jpg"
 #THIS MUST BE A NON-CHROOT PATH!!!
 
+#MAGIC WORD
+echo "Type your magic word:"
+read mgwd
+
 #INITIALIZATION
 #timedatectl set-ntp true
 #PGP keys can become unusable if time is set incorrectly

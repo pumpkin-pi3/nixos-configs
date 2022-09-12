@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # FOR INSTANT RUNNING:
-# zsh -c "$(curl -fsSL https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/arch_install.sh)"
+# zsh -c "$(curl -fsSL https://raw.githubusercontent.com/pumpkin-pi3/nixos-configs/main/arch_install_basic.sh)"
 
 # BE SURE THE INSTALLATION ENVIRONMENT'S VOLUME ISN'T TOO LOW:
 amixer set Master 10+
